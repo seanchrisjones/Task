@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 extension Task{
-    
-    convenience init(name: String, notes: String? = nil, due: Date? = nil, complete: Bool, moc: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult
+    convenience init(name: String, notes: String? = nil, due: Date? = nil, complete: Bool = false, moc: NSManagedObjectContext = CoreDataStack.context) {
         self.init(context: moc)
         self.name = name
-        self.complete = complete
+        
     }
 }
