@@ -13,7 +13,8 @@ class TaskDetailTableViewController: UITableViewController {
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var dueDateTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
-    @IBOutlet weak var dueDatePicker: UIDatePicker!
+    @IBOutlet var dueDatePicker: UIDatePicker!
+    
     
     //MARK: PROPERTIES
     var task: Task?
@@ -32,9 +33,14 @@ class TaskDetailTableViewController: UITableViewController {
 
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let name = taskNameTextField.text, !taskNameTextField.text!.isEmpty else {return}
-        var dueDate = dueDateTextField.text
-        var notes = notesTextView.text
-        TaskController.sharedInstance.createTask(with: name)
+        let dueDate = dueDatePicker.date
+        let notes = notesTextView.text
+        if let task = self.task{
+            TaskController.sharedInstance.update(task: task, name: name, notes: notes, due: dueDate)
+        } else {
+            TaskController.sharedInstance.createTask(with: name, notes: notes, due: dueDate)
+            
+        }
         TaskController.sharedInstance.saveToPersistentStore()
         navigationController?.popViewController(animated: true)
         
@@ -48,9 +54,11 @@ class TaskDetailTableViewController: UITableViewController {
         
     }
     
-    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
-        dueDateTextField.text = dueDatePicker.date.stringValue()
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker){
+       
+            self.dueDateTextField.text = self.dueDatePicker.date.stringValue()
     }
+    
     //MARK: CLASS METHODS
     
     private func updateViews() {
@@ -62,14 +70,11 @@ class TaskDetailTableViewController: UITableViewController {
 
        }
     
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+
+   
+   
 
 }

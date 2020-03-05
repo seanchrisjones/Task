@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E98A8A572411AA2100E2B6E2 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98A8A562411AA2100E2B6E2 /* ButtonTableViewCell.swift */; };
 		E9E7B4D924106E0600F6ABCE /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7B4D824106E0600F6ABCE /* TaskListTableViewController.swift */; };
 		E9E7B4DB24106FE800F6ABCE /* TaskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7B4DA24106FE800F6ABCE /* TaskDetailTableViewController.swift */; };
 		E9E7B4DD2410707300F6ABCE /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E7B4DC2410707300F6ABCE /* CoreDataStack.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E98A8A562411AA2100E2B6E2 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E9E7B4D824106E0600F6ABCE /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 		E9E7B4DA24106FE800F6ABCE /* TaskDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewController.swift; sourceTree = "<group>"; };
 		E9E7B4DC2410707300F6ABCE /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				E9E7B4D824106E0600F6ABCE /* TaskListTableViewController.swift */,
 				E9E7B4DA24106FE800F6ABCE /* TaskDetailTableViewController.swift */,
+				E98A8A562411AA2100E2B6E2 /* ButtonTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				E9E7B4DF241071A300F6ABCE /* Task+Covnenience.swift in Sources */,
 				E9E7B4DB24106FE800F6ABCE /* TaskDetailTableViewController.swift in Sources */,
 				E9E7B4E324108DBD00F6ABCE /* DateHelper.swift in Sources */,
+				E98A8A572411AA2100E2B6E2 /* ButtonTableViewCell.swift in Sources */,
 				E9E7B4E1241074EF00F6ABCE /* TaskController.swift in Sources */,
 				FB4BD1A9237A1D88006648A7 /* SceneDelegate.swift in Sources */,
 			);

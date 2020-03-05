@@ -12,6 +12,7 @@ class TaskListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+       
 
      
     }
@@ -28,10 +29,12 @@ class TaskListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
-               let task = TaskController.sharedInstance.tasks[indexPath.row]
-               cell.textLabel?.text = task.name
-               return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as? ButtonTableViewCell else{return UITableViewCell()}
+        let task = TaskController.sharedInstance.tasks[indexPath.row]
+        cell.primaryLabel.text = task.name
+        cell.delegate = self
+        
+        return cell
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -40,18 +43,37 @@ class TaskListTableViewController: UITableViewController {
             let task = TaskController.sharedInstance.tasks[indexPath.row]
             TaskController.sharedInstance.deleteTask(task: task)
             tableView.deleteRows(at: [indexPath], with: .fade)
+           
         }
         
     }
 
-    /*
+   
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+           if let destinationViewController = segue.destination as? TaskDetailTableViewController{
+               if let indexPath = tableView.indexPathForSelectedRow{
+                   let task = TaskController.sharedInstance.tasks[indexPath.row]
+                   destinationViewController.task = task
+                   
+               }
+           }
+          
+       }
+    
 
+}
+extension TaskListTableViewController : ButtonTableViewCellDelegate{
+    func buttonCellButtonTapped(_ sender: ButtonTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: sender) else {return}
+        let task = TaskController.sharedInstance.tasks[indexPath.row]
+        TaskController.sharedInstance.toggleIsCompleteFor(task: task)
+        sender.updateTask(withTask: task)
+        
+        
+    }
+    
+    
+    
 }

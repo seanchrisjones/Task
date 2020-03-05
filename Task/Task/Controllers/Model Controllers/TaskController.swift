@@ -31,8 +31,8 @@ class TaskController{
     
     //MARK: CRUD FUNCTIONS
     
-    func createTask(with name: String){
-        Task(name: name)
+    func createTask(with name: String, notes: String?, due: Date?){
+        Task(name: name, notes: notes, due: due)
         saveToPersistentStore()
     }
     
@@ -42,7 +42,7 @@ class TaskController{
         
     }
     
-  func update(task: Task, name: String, notes: String, due: Date) {
+  func update(task: Task, name: String, notes: String?, due: Date?) {
         task.name = name
         task.notes = notes
         task.due = due
@@ -57,5 +57,11 @@ class TaskController{
                print("There was an error saving the data!!! \(#function) \(error.localizedDescription)")
            }
        }
+    
+    func toggleIsCompleteFor(task: Task){
+        task.complete = !task.complete
+        saveToPersistentStore()
+        
+    }
     
 }
