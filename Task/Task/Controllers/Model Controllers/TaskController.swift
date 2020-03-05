@@ -36,7 +36,19 @@ class TaskController{
         saveToPersistentStore()
     }
     
-    func deleteTask(task: Task){}
+    func deleteTask(task: Task){
+        CoreDataStack.context.delete(task)
+        saveToPersistentStore()
+        
+    }
+    
+  func update(task: Task, name: String, notes: String, due: Date) {
+        task.name = name
+        task.notes = notes
+        task.due = due
+
+        saveToPersistentStore()
+    }
     
     func saveToPersistentStore(){
            do{

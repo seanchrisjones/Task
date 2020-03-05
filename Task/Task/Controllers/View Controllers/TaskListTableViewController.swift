@@ -24,12 +24,12 @@ class TaskListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return TaskController.sharedInstance.mockData.count
+        return TaskController.sharedInstance.tasks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
-               let task = TaskController.sharedInstance.mockData[indexPath.row]
+               let task = TaskController.sharedInstance.tasks[indexPath.row]
                cell.textLabel?.text = task.name
                return cell
     }
@@ -37,7 +37,7 @@ class TaskListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             
-            let task = TaskController.sharedInstance.mockData[indexPath.row]
+            let task = TaskController.sharedInstance.tasks[indexPath.row]
             TaskController.sharedInstance.deleteTask(task: task)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
